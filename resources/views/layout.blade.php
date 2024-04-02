@@ -6,6 +6,7 @@
 
     <title>Teamwork.gg</title>
 
+    <link href="static/style/app.css" rel="stylesheet" />
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -16,7 +17,7 @@
 </head>
 <body class="antialiased">
 <header class="sticky-top">
-    <nav class="navbar navbar-light navbar-expand-lg" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-light navbar-expand-lg panel">
         <div class="container">
             <a class="navbar-brand" href="{{route('welcome')}}">
                 Главная</a>
@@ -76,7 +77,8 @@
 <div class="container">
     @yield('content')
 </div>
-<footer class="text-center text-lg-start fixed-bottom">----</footer>
+
+<footer class="text-center text-lg-start fixed-bottom panel">----</footer>
 
 </body>
 </html>
