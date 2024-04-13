@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->text('description');
-            $table->date('ended_at');
+            $table->timestamp('ended_at')->nullable();
             $table->timestamps();
         });
     }

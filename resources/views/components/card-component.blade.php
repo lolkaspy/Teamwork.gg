@@ -1,19 +1,25 @@
 <div class="row row-cols-1 row-cols-md-4 g-4">
-    @php
-
-        @endphp
-    @for($i=0; $i < 48; $i++)
+    @foreach($projects as $project)
         @if(rand(1, 7)<>7)
             <div class="col">
                 <div class="card">
                     <img src="static/images/project_placeholder.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Название проекта</h5>
-                        <p class="card-text">Небольшое описание о проекте</p>
-                        <p class="card-text">Участников в команде: {{rand(1, 6)}}/7</p>
 
+                        <div>
+                            <h5 class="card-title">{{$project->name}}</h5>
+                            <p class="card-text">{{$project->description}}</p>
+                            <p class="card-text">Участников в команде: {{rand(1, 6)}}/7</p>
+                        </div>
 
-                        @include('components.tag-component')
+                        <span>Теги:</span>
+                        <div>
+
+                            @foreach($tags as $tag)
+                                <span class="badge">{{$tag->name}}</span>
+                            @endforeach
+                            <h5></h5>
+                        </div>
 
                         <div class="text-end">
                             <a href="/">
@@ -24,5 +30,5 @@
                 </div>
             </div>
         @endif
-    @endfor
+    @endforeach
 </div>

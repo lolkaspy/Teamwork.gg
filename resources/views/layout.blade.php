@@ -85,10 +85,17 @@
     </nav>
 </header>
 
-<div class="container">
-    @yield('content')
+<div class="bg-white  sticky-top"  style="top:55px; padding-top: 25px; padding-bottom: 25px">
+
+
+
+    @yield('form')
+
+
 </div>
 
+
+@yield('content')
 <footer class="text-center text-lg-start fixed-bottom panel">----</footer>
 
 </body>

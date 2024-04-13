@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
-Route::get('/projects', [ProjectsController::class, 'index'])
+Route::get('/projects', [ProjectController::class, 'index'])
     ->name('projects');
 
 Auth::routes();
