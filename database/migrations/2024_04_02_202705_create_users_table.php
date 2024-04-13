@@ -13,10 +13,17 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('login');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('phone');
+            $table->string('residence');
+            $table->unsignedBigInteger('project_id');
+            $table->foreign('project_id', 'user_project_fk')->on('projects')->references('id');
+            $table->index('project_id', 'user_project_idx');
+           // $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
