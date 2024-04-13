@@ -13,6 +13,17 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
     <!-- Styles -->
+    <script>
+        window.onload = function() {
+            var span = document.getElementsByTagName('span');
+            for (var i = 0; i < span.length; i++) {
+                span[i].style.backgroundColor = 'rgb(' +
+                    Math.floor(Math.random() * 200) + ',' +
+                    Math.floor(Math.random() * 200) + ',' +
+                    Math.floor(Math.random() * 200) + ')';
+            }
+        };
+    </script>
 
 </head>
 <body class="antialiased">
