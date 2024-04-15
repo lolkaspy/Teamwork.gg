@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('form')
+    <div class="bg-white  sticky-top search-panel" >
     <div class="container">
 
     <form class="form d-flex sticky-top bg-white">
@@ -8,12 +9,16 @@
         <button class="btn btn-outline-success" type="submit">Найти</button>
     </form>
     </div>
+    </div>
+
 @endsection
 @section('content')
+
     <div class="container">
-    <br>
+
+        <hr>
         <x-card-component/>
     <br>
-    <hr>
     </div>
+
 @endsection

@@ -1,9 +1,46 @@
 .card-img-top {
     width: 100%;
-    height: 10vw;
     object-fit: cover;
 }
 
 .panel {
     background-color: #e3f2fd;
 }
+
+.body-whitesmoke{
+    background-color: #fafdff;
+}
+.card-body {
+    min-height: 250px; /* Выберите высоту, которая подходит для ваших нужд */
+}
+
+.search-panel {
+    top:55px; padding-top: 25px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid rgba(0,0,0,0.05);
+    border-top:2px solid rgba(0,0,0,0.05);
+}
+
+.card-description {
+    min-height: 50px; /* Выберите высоту, которая подходит для ваших нужд */
+}
+.footer-panel{
+    border-bottom: 2px solid rgba(0,0,0,0.08);
+    border-top:2px solid rgba(0,0,0,0.08);
+    float: left;
+    width: 100%;
+}
+.grid2 {
+    display:flex;
+    padding: 10px 20px 10px 20px;
+    gap:175px;
+}
+.grid2-item {
+    text-align: left;
+}
+.socials{
+    display:flex;
+    vertical-align: center;
+    gap: 10px;
+}
+
