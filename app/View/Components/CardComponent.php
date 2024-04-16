@@ -25,6 +25,7 @@ class CardComponent extends Component
     {
         $projects = Project::paginate(12);
         $tags = Tag::all()->splice(40);
+
         return view('components.card-component', compact('projects', 'tags'));
     }
 }

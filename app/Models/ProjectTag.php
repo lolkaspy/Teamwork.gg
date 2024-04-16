@@ -11,7 +11,9 @@ class ProjectTag extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['project_id','tag_id'];
+
+    protected $fillable = ['project_id', 'tag_id'];
+
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);

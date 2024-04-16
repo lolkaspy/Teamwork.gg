@@ -49,7 +49,6 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-
     public function networks(): BelongsToMany
     {
         return $this->belongsToMany(Network::class);

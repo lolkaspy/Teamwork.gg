@@ -11,7 +11,9 @@ class NetworkUser extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['user_id','network_id'];
+
+    protected $fillable = ['user_id', 'network_id'];
+
     public function network(): BelongsTo
     {
         return $this->belongsTo(Network::class);

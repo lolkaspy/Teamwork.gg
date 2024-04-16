@@ -17,8 +17,8 @@ class ProjectFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->realTextBetween(10,25),
-            'description' => fake()->unique()->realTextBetween(20,50),
+            'name' => fake()->unique()->realTextBetween(10, 25),
+            'description' => fake()->unique()->realTextBetween(20, 50),
         ];
     }
 }

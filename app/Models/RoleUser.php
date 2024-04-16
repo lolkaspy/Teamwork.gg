@@ -11,7 +11,9 @@ class RoleUser extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['user_id','role_id'];
+
+    protected $fillable = ['user_id', 'role_id'];
+
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);

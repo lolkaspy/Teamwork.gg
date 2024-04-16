@@ -11,7 +11,9 @@ class TagUser extends Model
     use HasFactory;
 
     public $timestamps = false;
-    protected $fillable = ['user_id','tag_id'];
+
+    protected $fillable = ['user_id', 'tag_id'];
+
     public function tag(): BelongsTo
     {
         return $this->belongsTo(Tag::class);
