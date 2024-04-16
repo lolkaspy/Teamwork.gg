@@ -16,7 +16,7 @@
                         <span class="card-text">Теги:</span>
                         <div>
 
-                            @foreach($tags as $tag)
+                            @foreach($project->tags as $tag)
                                 <span class="badge">{{$tag->name}}</span>
                             @endforeach
                             <h5></h5>

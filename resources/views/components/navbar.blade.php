@@ -42,12 +42,17 @@
                     </li>
 
                     <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-white"
-                           href="" role="button" data-bs-toggle="dropdown"
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle"
+                           href="{{route('profile')}}" role="button" data-bs-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" v-pre>
-                            Логин
+                            {{ __('Логин') }}
                         </a>
+
+
                         <div class="dropdown-menu dropdown-menu-end text-white" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('profile') }}">
+                                {{ __('Личный кабинет') }}
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -23,9 +23,9 @@ class CardComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        $projects = Project::paginate(12);
-        $tags = Tag::all()->splice(40);
+        $projects = Project::with('tags')->paginate(12);
 
-        return view('components.card-component', compact('projects', 'tags'));
+
+        return view('components.card-component', compact('projects'));
     }
 }

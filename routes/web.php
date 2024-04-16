@@ -24,3 +24,5 @@ Route::get('/projects', [ProjectController::class, 'index'])
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/profile', [\App\Http\Controllers\ProfileController::class, 'index'])->name('profile')->middleware('auth');
