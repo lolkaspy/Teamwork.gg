@@ -18,7 +18,7 @@ class Tag extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'tag_users');
     }
 
     public function projects(): BelongsToMany

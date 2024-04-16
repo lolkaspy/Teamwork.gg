@@ -27,6 +27,7 @@ class User extends Authenticatable
         'phone',
         'residence',
         'project_id',
+        'photo',
     ];
 
     /**
@@ -51,16 +52,16 @@ class User extends Authenticatable
 
     public function networks(): BelongsToMany
     {
-        return $this->belongsToMany(Network::class);
+        return $this->belongsToMany(Network::class, 'network_users');
     }
 
     public function tags(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsToMany(Tag::class, 'tag_users');
     }
 
     public function roles(): BelongsToMany
     {
-        return $this->belongsToMany(Role::class);
+        return $this->belongsToMany(Role::class, 'role_users');
     }
 }

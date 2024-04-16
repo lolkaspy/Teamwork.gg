@@ -15,11 +15,9 @@
                         <p class="card-text">Участников в команде: {{rand(1, 6)}}/7</p>
                         <span class="card-text">Теги:</span>
                         <div>
-
                             @foreach($project->tags as $tag)
                                 <span class="badge">{{$tag->name}}</span>
                             @endforeach
-                            <h5></h5>
                         </div>
 
 

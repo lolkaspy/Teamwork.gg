@@ -23,6 +23,7 @@ return new class extends Migration
             $table->unsignedBigInteger('project_id');
             $table->foreign('project_id', 'user_project_fk')->on('projects')->references('id');
             $table->index('project_id', 'user_project_idx');
+            $table->string('photo')->default('static/images/default_avatar.png');
             // $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

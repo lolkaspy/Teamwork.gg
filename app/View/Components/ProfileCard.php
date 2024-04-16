@@ -2,12 +2,12 @@
 
 namespace App\View\Components;
 
-use App\Models\Project;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\Component;
 
-class CardComponent extends Component
+class ProfileCard extends Component
 {
     /**
      * Create a new component instance.
@@ -22,8 +22,6 @@ class CardComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        $projects = Project::with('tags')->paginate(12);
-
-        return view('components.card-component', compact('projects'));
+        return view('components.profile-card');
     }
 }

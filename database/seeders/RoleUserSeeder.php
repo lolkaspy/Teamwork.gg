@@ -12,6 +12,6 @@ class RoleUserSeeder extends Seeder
      */
     public function run(): void
     {
-        RoleUser::factory(10)->create();
+        RoleUser::factory(20)->create();
     }
 }
