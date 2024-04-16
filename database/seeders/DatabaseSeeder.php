@@ -12,14 +12,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\
-
-        $this->call(ProjectSeeder::class);
         $this->call([
+            ProjectSeeder::class,
             NetworkSeeder::class,
             RoleSeeder::class,
             UserSeeder::class,
             TagSeeder::class,
+            RoleUserSeeder::class,
+            NetworkUserSeeder::class,
+            ProjectTagSeeder::class,
+            TagUserSeeder::class,
         ]);
     }
 }

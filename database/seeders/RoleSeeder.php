@@ -31,5 +31,6 @@ class RoleSeeder extends Seeder
             $role = new Role($item);
             $role->save();
         }
+
     }
 }
