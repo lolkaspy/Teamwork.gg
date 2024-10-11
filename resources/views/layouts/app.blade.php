@@ -25,6 +25,10 @@
                     Math.floor(Math.random() * 200) + ')';
             }
         };
+        /*
+        */
+
+
     </script>
 
 </head>
@@ -40,6 +44,37 @@
 <footer class="text-lg-start panel justify-content-center d-flex footer-panel">
 <x-footer-navbar/>
 </footer>
+<script>
+    const words = ["завтра!", "вчера!", "послезавтра!", "через год!", "год назад!"];
+    const backgrounds = [
+        'it.jpg',
+        'project.jpg',
+        'sport.jpg',
+        'cybersport.jpg',
+        'science.jpg'
+    ];
 
+    const dynamicText = document.getElementById('dynamic-text');
+    const dynamicContent = document.getElementById("dynamic-bg");
+    let index = 0;
+    let interval;
+
+    dynamicText.addEventListener('mouseenter', () => {
+        index = 0;
+        interval = setInterval(() => {
+            dynamicText.textContent = words[index];
+            dynamicContent.style.backgroundImage = "url('static/images/" + backgrounds[index] + "')";
+            dynamicContent.style.color = "white";
+            index = (index + 1) % words.length; // Циклический переход по массиву
+        }, 500);
+    });
+    //static/images/project_placeholder.jpg
+    dynamicText.addEventListener('mouseleave', () => {
+        clearInterval(interval);
+        dynamicText.textContent = "всегда!";
+        dynamicContent.style.backgroundImage = "";
+        dynamicContent.style.color = "black";
+    });
+</script>
 </body>
 </html>

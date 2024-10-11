@@ -38,7 +38,7 @@ services:
       dockerfile: php.Dockerfile
     volumes:
       - ./:/var/www/teamwork
-    entrypoint: ["php", "/var/www/shop/artisan"]
+    entrypoint: ["php", "/var/www/teamwork/artisan"]
   npm:
     image: "node:20-alpine"
     working_dir: /var/www/teamwork

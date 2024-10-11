@@ -3,6 +3,34 @@
     object-fit: cover;
 }
 
+.landing-welcome-placeholder{
+    text-decoration: underline;
+}
+
+.recent-news, .recent-projects {
+    padding-top: 75px;
+    padding-bottom: 75px;
+}
+
+.welcome-h1{
+    font-size: 72px;
+}
+
+.landing-welcome-text{
+    background-repeat: no-repeat;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    padding-left: 50px;
+
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 1600px;
+    margin: 20px auto;
+    cursor: default;
+}
+
 .panel {
     background-color: #e3f2fd;
 }
