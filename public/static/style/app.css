@@ -7,9 +7,25 @@
     text-decoration: underline;
 }
 
-.recent-news, .recent-projects {
-    padding-top: 75px;
-    padding-bottom: 75px;
+.recent-news {
+    padding-bottom: 50px;
+}
+
+.welcome-header{
+    background-color: #e3f2fd;
+    display: flex;
+    align-items: center; /* Вертикальное выравнивание по центру */
+    height: 75px; /* Установите нужную высоту */
+
+}
+
+.recent-header{
+    margin-left: 20px;
+
+}
+.recent-projects {
+    padding-top: 25px;
+    padding-bottom: 25px;
 }
 
 .welcome-h1{

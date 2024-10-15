@@ -25,10 +25,6 @@
                     Math.floor(Math.random() * 200) + ')';
             }
         };
-        /*
-        */
-
-
     </script>
 
 </head>
@@ -66,7 +62,7 @@
             dynamicContent.style.backgroundImage = "url('static/images/" + backgrounds[index] + "')";
             dynamicContent.style.color = "white";
             index = (index + 1) % words.length; // Циклический переход по массиву
-        }, 500);
+        }, 425);
     });
     //static/images/project_placeholder.jpg
     dynamicText.addEventListener('mouseleave', () => {
