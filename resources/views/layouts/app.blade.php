@@ -73,19 +73,6 @@
 
     });
 
-
-    function changeUnderlineColor() {
-        const spanElement = document.querySelector('span');
-        // Генерация случайного цвета
-        const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
-        // Изменение цвета подчеркивания
-        spanElement.style.setProperty('--underline-color', randomColor);
-        spanElement.style.setProperty('text-decoration-color', randomColor);
-        spanElement.style.borderBottom = "2px solid ${randomColor}";
-    }
-
-    // Добавляем обработчик события клика
-    document.querySelector('span').addEventListener('mouseenter', changeUnderlineColor);
 </script>
 </body>
 </html>
