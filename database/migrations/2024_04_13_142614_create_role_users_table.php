@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('role_users', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id', 'role_user_user_fk')->on('users')->references('id');
-            $table->index('user_id', 'role_user_user_idx');
+            $table->foreign('user_id', 'role_users_user_fk')->on('users')->references('id');
+            $table->index('user_id', 'role_users_user_idx');
 
             $table->unsignedBigInteger('role_id');
-            $table->foreign('role_id', 'role_id_role_fk')->on('roles')->references('id');
-            $table->index('role_id', 'role_id_role_idx');
+            $table->foreign('role_id', 'role_users_role_fk')->on('roles')->references('id');
+            $table->index('role_id', 'role_users_role_idx');
         });
     }
 

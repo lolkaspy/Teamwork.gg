@@ -8,6 +8,8 @@ class ProjectController extends Controller
 {
     public function index()
     {
-        return view('project-cards');
+        $projects = Project::with('tags')->paginate(12);
+
+        return view('project-cards', compact('projects'));
     }
 }

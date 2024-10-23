@@ -5,6 +5,7 @@ namespace App\View\Components;
 use App\Models\Project;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\Component;
 
 class CardComponent extends Component
@@ -12,7 +13,7 @@ class CardComponent extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(public LengthAwarePaginator $projects)
     {
         //
     }
@@ -22,8 +23,7 @@ class CardComponent extends Component
      */
     public function render(): View|Closure|string
     {
-        $projects = Project::with('tags')->paginate(12);
 
-        return view('components.card-component', compact('projects'));
+        return view('components.card-component');
     }
 }

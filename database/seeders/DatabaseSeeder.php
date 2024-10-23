@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             NetworkUserSeeder::class,
             ProjectTagSeeder::class,
             TagUserSeeder::class,
+            NewsSeeder::class,
         ]);
     }
 }

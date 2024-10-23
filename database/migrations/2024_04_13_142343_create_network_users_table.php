@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('network_users', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id', 'network_user_user_fk')->on('users')->references('id');
-            $table->index('user_id', 'network_user_user_idx');
+            $table->foreign('user_id', 'network_users_user_fk')->on('users')->references('id');
+            $table->index('user_id', 'network_users_user_idx');
 
             $table->unsignedBigInteger('network_id');
-            $table->foreign('network_id', 'network_user_network_fk')->on('networks')->references('id');
-            $table->index('network_id', 'network_user_network_idx');
+            $table->foreign('network_id', 'network_users_network_fk')->on('networks')->references('id');
+            $table->index('network_id', 'network_users_network_idx');
         });
     }
 

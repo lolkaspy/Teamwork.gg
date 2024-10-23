@@ -2,19 +2,17 @@
 
 namespace App\View\Components;
 
-use App\Models\Project;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\View\Component;
 
-class RecentProjectCardComponent extends Component
+class RecentNewsCardComponent extends Component
 {
     /**
      * Create a new component instance.
      */
-    public function __construct(public Collection $recentProjects)
+    public function __construct(public Collection $recentNews)
     {
         //
     }
@@ -24,7 +22,6 @@ class RecentProjectCardComponent extends Component
      */
     public function render(): View|Closure|string
     {
-
-        return view('components.recent-project-card-component');
+        return view('components.recent-news-card-component');
     }
 }

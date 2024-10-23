@@ -6,14 +6,14 @@
     <div class="container-md recent-projects">
         <div class="welcome-header"><h2 class="recent-header">Недавние проекты</h2> </div>
         <hr>
-        <x-recent-project-card-component/>
+        <x-recent-project-card-component :recentProjects="$recentProjects"/>
     </div>
     <div class="container-md recent-news">
         <div class="welcome-header"><h2 class="recent-header">Последние новости</h2>
 
         </div>
         <hr>
-        <x-recent-project-card-component/>
+        <x-recent-news-card-component :recentNews="$recentNews"/>
 
     </div>
 @endsection

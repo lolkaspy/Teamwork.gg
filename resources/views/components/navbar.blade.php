@@ -15,7 +15,7 @@
                 </li>
                 <li class="vr"></li>
 
-                <li class="nav-item"><a class="nav-link" href="{{route('projects')}}">Что-то ещё</a>
+                <li class="nav-item"><a class="nav-link" href="{{route('news-page')}}">Новости</a>
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->

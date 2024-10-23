@@ -3,8 +3,10 @@
     object-fit: cover;
 }
 
+
 .landing-welcome-placeholder{
     text-decoration: underline;
+    text-underline-offset: 15px;
 }
 
 .recent-news {
@@ -69,6 +71,7 @@
 .card-description {
     min-height: 50px; /* Выберите высоту, которая подходит для ваших нужд */
 }
+
 .footer-panel{
     border-bottom: 2px solid rgba(0,0,0,0.08);
     border-top:2px solid rgba(0,0,0,0.08);
@@ -92,3 +95,11 @@
 .dropdown-menu, .dropdown-menu-end {
     z-index: 10;
 }
+
+.news-card {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    height: 150px;
+    padding-top: 25px;
+}
+

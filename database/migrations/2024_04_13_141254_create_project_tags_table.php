@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('project_tags', function (Blueprint $table) {
             $table->unsignedBigInteger('project_id');
-            $table->foreign('project_id', 'project_tag_project_fk')->on('projects')->references('id');
-            $table->index('project_id', 'project_tag_project_idx');
+            $table->foreign('project_id', 'project_tags_project_fk')->on('projects')->references('id');
+            $table->index('project_id', 'project_tags_project_idx');
 
             $table->unsignedBigInteger('tag_id');
-            $table->foreign('tag_id', 'project_tag_tag_fk')->on('tags')->references('id');
-            $table->index('tag_id', 'project_tag_tag_idx');
+            $table->foreign('tag_id', 'project_tags_tag_fk')->on('tags')->references('id');
+            $table->index('tag_id', 'project_tags_tag_idx');
         });
     }
 
