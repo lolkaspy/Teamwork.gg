@@ -37,7 +37,7 @@
 @yield('form')
 @yield('content')
 
-<footer class="text-lg-start panel justify-content-center d-flex footer-panel">
+<footer class="text-lg-start panel footer-panel">
 <x-footer-navbar/>
 </footer>
 <script>
