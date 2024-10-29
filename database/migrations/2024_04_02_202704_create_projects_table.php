@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description');
             $table->timestamp('ended_at')->nullable();
             $table->timestamps();
+            $table->tinyInteger('state')->default(0);
         });
     }
 
