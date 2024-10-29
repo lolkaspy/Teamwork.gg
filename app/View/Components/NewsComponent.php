@@ -2,8 +2,6 @@
 
 namespace App\View\Components;
 
-
-use App\Models\News;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -13,10 +11,7 @@ class NewsComponent extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public array $news)
-    {
-
-    }
+    public function __construct(public array $news) {}
 
     /**
      * Get the view / contents that represent the component.

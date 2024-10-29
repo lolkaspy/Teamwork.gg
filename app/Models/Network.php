@@ -18,6 +18,6 @@ class Network extends Model
 
     public function users(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'network_users'   );
+        return $this->belongsToMany(User::class, 'network_users');
     }
 }

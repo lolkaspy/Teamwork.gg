@@ -20,9 +20,9 @@ class NewsFactory extends Factory
 
         return [
             'title' => fake()->unique()->realTextBetween(15, 35),
-            'preview' => substr($content,0,100),
+            'preview' => substr($content, 0, 100),
             'content' => $content,
-            'user_id' => fake()->randomElement([1,2]),
+            'user_id' => fake()->randomElement([1, 2]),
         ];
     }
 }
