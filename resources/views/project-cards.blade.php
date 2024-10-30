@@ -16,7 +16,7 @@
 
     <div class="container">
         <hr>
-        <x-card-component :projects="$projects"/>
+        <x-project-card :projects="$projects"/>
         <br>
     </div>
 
