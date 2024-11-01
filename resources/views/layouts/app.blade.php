@@ -14,6 +14,9 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
 
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 </head>
 <body class="antialiased body-whitesmoke">
 
@@ -24,9 +27,12 @@
 @yield('form')
 @yield('content')
 
+<x-modal-project-creator/>
+
 <footer class="text-lg-start panel footer-panel">
 <x-footer-navbar/>
 </footer>
+
 
 </body>
 </html>

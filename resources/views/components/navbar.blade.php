@@ -38,14 +38,19 @@
 
                     <li class="nav-item">
                         <a class="nav-link"
-                           href="">{{ __('Создать проект') }}</a>
+                           href="">
+                            <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#createProjectModal" onclick="return false;">
+                                {{ __('Создать проект') }}
+                            </button>
+                        </a>
                     </li>
 
                     <li class="nav-item dropdown">
+
                         <a id="navbarDropdown" class="nav-link dropdown-toggle"
                            href="{{route('profile')}}" role="button" data-bs-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ __('Логин') }}
+                            {{ Auth::user()->login }}
                         </a>
 
 

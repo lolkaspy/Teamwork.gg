@@ -1,7 +1,7 @@
 import './bootstrap';
-
+import Tagify from '@yaireo/tagify'
 import 'bootstrap';
-
+import { Modal } from 'bootstrap'
 import '@popperjs/core';
 
 //#region раскраска тегов
@@ -15,3 +15,18 @@ window.onload = function() {
     }
 };
 //#endregion
+
+function closeModal() {
+    let modal = new Modal(document.getElementById('createProjectModal'), {keyboard: false});
+
+        modal.hide(); // Скрываем модальное окно
+
+}
+document.getElementById('closeModalBtn').addEventListener('click', function(event) {
+    closeModal();
+});
+
+var input = document.querySelector('input[name=basic]');
+
+// initialize Tagify on the above input node reference
+new Tagify(input)

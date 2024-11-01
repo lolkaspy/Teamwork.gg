@@ -2,7 +2,4 @@
 
 namespace App\Enums;
 
-enum ProjectStateEnum
-{
-
-}
+enum ProjectStateEnum {}
