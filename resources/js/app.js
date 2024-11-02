@@ -4,6 +4,7 @@ import 'bootstrap';
 import { Modal } from 'bootstrap'
 import '@popperjs/core';
 
+
 //#region раскраска тегов
 window.onload = function() {
     var span = document.getElementsByClassName('badge');

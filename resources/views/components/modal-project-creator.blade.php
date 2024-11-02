@@ -29,8 +29,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="projectWays" class="form-label">Выберите вариант реализации проекта</label>
-                            <select id="projectWays" class="form-select" aria-label="Выберите вариант реализации проекта">
+                            <label for="projectFormats" class="form-label">Выберите вариант реализации проекта</label>
+                            <select id="projectFormats" class="form-select" aria-label="Выберите вариант реализации проекта">
                                 <option selected></option>
                                 <option value="1">Дистанционный</option>
                                 <option value="2">Очный</option>

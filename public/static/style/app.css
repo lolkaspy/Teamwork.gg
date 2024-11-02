@@ -63,7 +63,7 @@
     cursor: default;
 }
 
-.panel {
+.panel, .modal-header {
     background-color: #e3f2fd;
 }
 

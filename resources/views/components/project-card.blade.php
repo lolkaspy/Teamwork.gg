@@ -8,18 +8,20 @@
 
                         <div>
                             <h5 class="card-title">{{$project->name}}</h5>
-                            <p class="card-text card-description    ">{{$project->description}}</p>
+                            <p class="card-text card-description">{{$project->description}}</p>
                         </div>
 
 
                         <p class="card-text">Участников в команде: {{rand(1, 6)}}/7</p>
+                        <p class="card-text">Формат: {{$project->format->name}}</p>
                         <span class="card-text">Теги:</span>
-                        <div>
+                        <div class="mb-5" style="height: 35px;">
                             @foreach($project->tags as $tag)
                                 <span class="badge">{{$tag->name}}</span>
                             @endforeach
                         </div>
 
+                        <p class="card-text ms-2">Возрастное ограничение: {{$project->age_limit->limit}}</p>
 
                     </div>
                     <div class="text-end card-footer">

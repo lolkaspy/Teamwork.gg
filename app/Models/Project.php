@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Project extends Model
 {
@@ -22,8 +24,19 @@ class Project extends Model
         return $this->belongsToMany(Tag::class, 'project_tags');
     }
 
-    public function user(): BelongsTo
+    public function age_limit(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(AgeLimit::class);
     }
+
+    public function format(): BelongsTo
+    {
+        return $this->belongsTo(Format::class);
+    }
+
+    public function users(): HasMany
+    {
+        return $this->hasMany(User::class);
+    }
+
 }

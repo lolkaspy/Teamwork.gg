@@ -19,6 +19,8 @@ class ProjectFactory extends Factory
         return [
             'name' => fake()->unique()->realTextBetween(10, 25),
             'description' => fake()->unique()->realTextBetween(20, 50),
+            'age_limit_id' => fake()->numberBetween(1, 3),
+            'format_id' => fake()->numberBetween(1, 3),
         ];
     }
 }
