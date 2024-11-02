@@ -19,14 +19,31 @@ window.onload = function() {
 function closeModal() {
     let modal = new Modal(document.getElementById('createProjectModal'), {keyboard: false});
 
-        modal.hide(); // Скрываем модальное окно
+        modal.hide();
 
 }
 document.getElementById('closeModalBtn').addEventListener('click', function(event) {
     closeModal();
 });
 
-var input = document.querySelector('input[name=basic]');
+document.addEventListener('DOMContentLoaded', function() {
+var input = document.querySelector('input[name=tags-outside]')
 
-// initialize Tagify on the above input node reference
-new Tagify(input)
+fetch('/api/tags')
+    .then(response => response.json())
+    .then(tagList => {
+var tagify = new Tagify(input, {
+    whitelist: tagList,
+    focusable: false,
+    dropdown: {
+        position: 'input',
+        enabled: 0, // always opens dropdown when input gets focus
+        maxItems      : 5,
+        closeOnSelect : false,          // keep the dropdown open after selecting a suggestion
+        highlightFirst: true
+    }
+});
+    })
+    .catch(error => console.error('Ошибка:', error));
+
+});

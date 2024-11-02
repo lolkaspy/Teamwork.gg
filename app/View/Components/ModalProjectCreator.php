@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Models\Tag;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
@@ -18,6 +19,8 @@ class ModalProjectCreator extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.modal-project-creator');
+        $tags = Tag::all(); // Получаем все теги из базы данных
+
+        return view('components.modal-project-creator', compact('tags'));
     }
 }
