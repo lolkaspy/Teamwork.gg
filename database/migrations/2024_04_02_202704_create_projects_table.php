@@ -16,11 +16,14 @@ return new class extends Migration
             $table->string('name')->unique();
             $table->text('description');
             $table->timestamp('ended_at')->nullable();
+            $table->string('photo')->default('static/images/project_placeholder.png');
+
             $table->unsignedBigInteger('age_limit_id');
             $table->foreign('age_limit_id', 'age_limit_project_fk')->on('age_limits')->references('id');
 
             $table->unsignedBigInteger('format_id');
             $table->foreign('format_id', 'format_project_fk')->on('formats')->references('id');
+
             $table->timestamps();
             $table->tinyInteger('state')->default(0);
         });

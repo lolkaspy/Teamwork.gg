@@ -3,7 +3,7 @@
 
             <div class="col">
                 <div class="card">
-                    <img src="static/images/project_placeholder.jpg" class="card-img-top" alt="...">
+                    <img src="{{$project->photo}}" class="card-img-top" alt="...">
                     <div class="card-body">
 
                         <div>

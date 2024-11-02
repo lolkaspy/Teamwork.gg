@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('age_limits', function (Blueprint $table) {
             $table->id();
-            $table->string('limit',3);
+            $table->string('limit', 3);
         });
     }
 

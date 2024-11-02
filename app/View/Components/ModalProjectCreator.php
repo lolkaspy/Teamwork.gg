@@ -2,6 +2,8 @@
 
 namespace App\View\Components;
 
+use App\Enums\AgeLimitEnum;
+use App\Enums\FormatEnum;
 use App\Models\Tag;
 use Closure;
 use Illuminate\Contracts\View\View;
@@ -20,7 +22,9 @@ class ModalProjectCreator extends Component
     public function render(): View|Closure|string
     {
         $tags = Tag::all(); // Получаем все теги из базы данных
+        $ageLimitEnum = AgeLimitEnum::class;
+        $formatEnum = FormatEnum::class;
 
-        return view('components.modal-project-creator', compact('tags'));
+        return view('components.modal-project-creator', compact('tags', 'ageLimitEnum', 'formatEnum'));
     }
 }

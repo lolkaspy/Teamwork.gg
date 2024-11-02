@@ -30,21 +30,21 @@
 
                         <div class="mb-3">
                             <label for="projectFormats" class="form-label">Выберите вариант реализации проекта</label>
-                            <select id="projectFormats" class="form-select" aria-label="Выберите вариант реализации проекта">
-                                <option selected></option>
-                                <option value="1">Дистанционный</option>
-                                <option value="2">Очный</option>
-                                <option value="3">Смешанный</option>
+                            <select id="projectFormats" class="form-control form-select" aria-label="Выберите вариант реализации проекта">
+                                <option value="" selected disabled hidden></option>
+                                <option value="{{$formatEnum::Remote->value}}" {{(request()->state == $formatEnum::Remote) ? 'selected' : '' }}>Дистанционный</option>
+                                <option value="{{$formatEnum::OnSite->value}}" {{(request()->state == $formatEnum::OnSite) ? 'selected' : '' }}>Очный</option>
+                                <option value="{{$formatEnum::Mixed->value}}" {{(request()->state == $formatEnum::Mixed) ? 'selected' : '' }}>Смешанный</option>
                             </select>
                         </div>
 
                         <div class="mb-3">
                             <label for="projectAgeLimits" class="form-label">Выберите возрастные ограничения</label>
-                            <select id="projectAgeLimits" class="form-select" aria-label="Выберите возрастные ограничения">
-                                <option selected></option>
-                                <option value="1">16+</option>
-                                <option value="2">18+</option>
-                                <option value="3">35+</option>
+                            <select id="projectAgeLimits" class="form-control form-select" aria-label="Выберите возрастные ограничения">
+                                <option value="" selected disabled hidden></option>
+                                <option value="{{$ageLimitEnum::Sixteen->value}}" {{(request()->state == $ageLimitEnum::Sixteen) ? 'selected' : '' }}>16+</option>
+                                <option value="{{$ageLimitEnum::Eighteen->value}}" {{(request()->state == $ageLimitEnum::Eighteen) ? 'selected' : '' }}>18+</option>
+                                <option value="{{$ageLimitEnum::ThirtyFive->value}}" {{(request()->state == $ageLimitEnum::ThirtyFive) ? 'selected' : '' }}>35+</option>
                             </select>
                         </div>
                         </div>
