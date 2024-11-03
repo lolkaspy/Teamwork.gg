@@ -17,6 +17,8 @@ class Project extends Model
         'description',
         'ended_at',
         'photo',
+        'age_limit_id',
+        'format_id',
         'state',
     ];
 
