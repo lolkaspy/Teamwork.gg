@@ -19,7 +19,7 @@
                 </li>
             </ul>
             <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
+            <ul class="navbar-nav ms-auto navbar-right">
                 <!-- Authentication Links -->
                 @guest
                     @if (Route::has('login'))
@@ -39,7 +39,7 @@
                     <li class="nav-item">
                         <a class="nav-link"
                            href="">
-                            <button type="button" class="btn btn-sm btn-outline-dark" data-bs-toggle="modal" data-bs-target="#createProjectModal" onclick="return false;">
+                            <button type="button" class="btn btn-primary btn-custom" data-bs-toggle="modal" data-bs-target="#createProjectModal" onclick="return false;">
                                 {{ __('Создать проект') }}
                             </button>
                         </a>

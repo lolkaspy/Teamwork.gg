@@ -7,7 +7,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="create-project-form" id="createProjectForm" method="POST" action="{{route('projectStore')}}">
+                <form class="create-project-form" id="createProjectForm" method="POST" action="{{route('projectStore')}}" enctype='multipart/form-data'>
                     @csrf
                     <div class="form-group">
 
@@ -28,14 +28,30 @@
                         </div>
                         </div>
 
+
                         <div class="mb-3">
                         <label for="projectDescription" class="form-label">Введите описание</label>
                         <textarea class="form-control" name="description" id="projectDescription" style="height: 350px; resize: none;"></textarea>
                         </div>
 
                         <div class="mb-3">
+                            <label for="projectPhoto">Загрузите изображение для проекта</label>
+                            <input type="file" name="image" required class="course form-control">
+                        </div>
+
+                        <div class="mb-3">
                         <label for="projectTags" class="form-label">Выберите теги, соответствующие проекту</label>
                         <input name='tags-outside' id="projectTags" class='tagify--outside form-control' value='' placeholder='Тег, например, "Разработка ПО"'>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="projectParticipants" class="form-label">Укажите максимальное число участников</label>
+                            <select id="projectParticipants" name="participants"  class="form-control form-select" aria-label="Укажите максимальное число участников">
+                                <option value="" selected disabled hidden></option>
+                                <@for($i=2;$i<=10;$i++)
+                                    <option value="{{$i}}">{{$i}}</option>
+                                @endfor
+                            </select>
                         </div>
 
                         <div class="mb-3">

@@ -30,18 +30,20 @@ document.getElementById('closeModalBtn').addEventListener('click', function(even
 document.addEventListener('DOMContentLoaded', function() {
 var input = document.querySelector('input[name=tags-outside]')
 
+
 fetch('/api/tags')
     .then(response => response.json())
     .then(tagList => {
 var tagify = new Tagify(input, {
     whitelist: tagList,
     focusable: false,
+    maxTags: 10,
     dropdown: {
         position: 'input',
-        enabled: 0, // always opens dropdown when input gets focus
+        enabled: 0,
         maxItems      : 5,
-        closeOnSelect : false,          // keep the dropdown open after selecting a suggestion
-        highlightFirst: true
+        closeOnSelect : false,
+        highlightFirst: true,
     }
 });
     })

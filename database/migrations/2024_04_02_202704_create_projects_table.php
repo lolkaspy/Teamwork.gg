@@ -18,6 +18,8 @@ return new class extends Migration
             $table->timestamp('ended_at')->nullable();
             $table->string('photo')->default('static/images/project_placeholder.jpg')->nullable();
 
+            $table->unsignedTinyInteger('participants')->default(2)->nullable();
+
             $table->unsignedBigInteger('age_limit_id');
             $table->foreign('age_limit_id', 'age_limit_project_fk')->on('age_limits')->references('id');
 

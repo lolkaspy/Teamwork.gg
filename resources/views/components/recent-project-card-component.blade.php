@@ -11,7 +11,7 @@
                         <p class="card-text card-description">{{$recentProject->description}}</p>
                     </div>
 
-                    <p class="card-text">Участников в команде: {{rand(1, 6)}}/7</p>
+                    <p class="card-text">Участников в команде: {{$participantsCount[$recentProject->id]->count ?? 0}}/{{$recentProject->participants}}</p>
                     <p class="card-text">Формат: {{$recentProject->format->name}}</p>
                     <span class="card-text">Теги:</span>
                     <div class="mb-5" style="height: 35px;">
@@ -21,10 +21,11 @@
                     </div>
                     <p class="card-text ms-2">Возрастное ограничение: {{$recentProject->age_limit->limit}}</p>
                 </div>
-                <div class="text-end card-footer">
-                    <a href="/">
-                        <button class="btn btn-primary">Участвовать</button>
-                    </a>
+                <div class="card-footer" >
+                    <div class="d-grid gap-2 d-md-flex justify-content-between"  aria-label="First group">
+                        <a href="/" class="btn btn-primary">Посмотреть</a>
+                        <a href="/" class="btn btn-primary">Участвовать</a>
+                    </div>
                 </div>
             </div>
         </div>

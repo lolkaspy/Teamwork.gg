@@ -5,6 +5,7 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\Component;
 
 class RecentProjectCardComponent extends Component
@@ -22,7 +23,8 @@ class RecentProjectCardComponent extends Component
      */
     public function render(): View|Closure|string
     {
+        $participantsCount = DB::table('project_users')->select(DB::raw('count(user_id) as count, project_id'))->groupBy('project_id')->get()->keyBy('project_id');
 
-        return view('components.recent-project-card-component');
+        return view('components.recent-project-card-component', compact('participantsCount'));
     }
 }

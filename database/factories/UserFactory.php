@@ -31,7 +31,6 @@ class UserFactory extends Factory
             'lname' => fake()->lastName(),
             'phone' => fake()->unique()->phoneNumber(),
             'residence' => fake()->city(),
-            'project_id' => fake()->unique()->randomNumber(2),
             //'email_verified_at' => now(),
             'remember_token' => Str::random(10),
         ];

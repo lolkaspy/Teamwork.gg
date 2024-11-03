@@ -107,6 +107,17 @@
     height: 150px;
     padding-top: 25px;
 }
+@media (min-width: 992px){
+    .navbar {
+        height: 60px;
+    }
+
+    .navbar-right {
+        display:flex;
+        align-items: center;
+    }
+
+}
 @media (max-width: 991px) {
     .vr {
         display: none;
