@@ -12,4 +12,9 @@ class ProjectController extends Controller
 
         return view('project-cards', compact('projects'));
     }
+
+    public function show(Project $project)
+    {
+        return view('project-info', compact('project'));
+    }
 }

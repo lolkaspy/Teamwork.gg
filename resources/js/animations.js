@@ -10,6 +10,7 @@ const backgrounds = [
 
 const dynamicText = document.getElementById('dynamic-text');
 const dynamicContent = document.getElementById("dynamic-bg");
+if (dynamicText && dynamicContent){
 let index = 0;
 let interval;
 let timeout = 425;
@@ -29,6 +30,7 @@ dynamicText.addEventListener('mouseleave', () => {
     dynamicContent.style.backgroundImage = "";
     dynamicContent.style.color = "black";
 });
+}
 //#endregion
 
 //-------------------------//

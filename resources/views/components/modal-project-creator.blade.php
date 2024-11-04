@@ -22,7 +22,8 @@
                                 </div>
                             @endif
                         <label for="projectName" class="form-label">Имя проекта</label>
-                        <input type="text" name="name" class="form-control" id="projectName" placeholder="Введите имя проекта" aria-describedby="projectNameHelpBlock">
+                        <input type="text" name="name" class="form-control" id="projectName" autocomplete="true"
+                               placeholder="Введите имя проекта" aria-describedby="projectNameHelpBlock">
                         <div id="projectNameHelpBlock" class="form-text">
                             Название должно быть уникальным и отражающим главную цель проекта.
                         </div>
@@ -36,7 +37,7 @@
 
                         <div class="mb-3">
                             <label for="projectPhoto">Загрузите изображение для проекта</label>
-                            <input type="file" name="image" required class="course form-control">
+                            <input type="file" id="projectPhoto" name="image" required class="course form-control">
                         </div>
 
                         <div class="mb-3">

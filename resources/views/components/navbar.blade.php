@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto navbar-left">
 
-                <li class="nav-item"><a class="nav-link" href="{{route('projects')}}">Проекты</a>
+                <li class="nav-item"><a class="nav-link" href="{{route('projects.index')}}">Проекты</a>
                 </li>
                 <li class="vr"></li>
 
@@ -50,7 +50,7 @@
                         <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-2"
                            href="{{route('profile')}}" role="button" data-bs-toggle="dropdown"
                            aria-haspopup="true" aria-expanded="false" v-pre>
-                           <img src="{{Auth::user()->photo}}" alt="фото" height="32" width="32"/> {{ Auth::user()->login }}
+                           <img src="{{asset(Auth::user()->photo)}}" alt="фото" height="32" width="32"/> {{ Auth::user()->login }}
                         </a>
 
 

@@ -19,6 +19,6 @@
                 <p class="margin-footer-item">spydetector@mail.ru</p>
             </div>
         </div>
-        <img src="static/images/company_logo.png" alt="logo" height="150px" width="150px"/>
+        <img src="{{asset('static/images/company_logo.png')}}" alt="logo" height="150px" width="150px"/>
     </div>
 </div>

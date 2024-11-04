@@ -24,7 +24,11 @@ Route::get('/', [WelcomeController::class, 'index'])
     ->name('welcome');
 
 Route::get('/projects', [ProjectController::class, 'index'])
-    ->name('projects');
+    ->name('projects.index');
+
+Route::get('/projects/{project}', [ProjectController::class, 'show'])
+    ->name('project.show');
+
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news-page');
 

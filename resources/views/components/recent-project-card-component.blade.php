@@ -16,14 +16,15 @@
                     <li class="list-group-item" style="height: 60px;">
                         @foreach($recentProject->tags as $tag)
                             <span class="badge">{{$tag->name}}</span>
-                        @endforeach</li>
+                        @endforeach
+                    </li>
                     <li class="list-group-item">Возрастное ограничение: {{$recentProject->age_limit->limit}}</li>
                 </ul>
 
 
                 <div class="card-footer" >
                     <div class="d-grid gap-2 d-md-flex justify-content-between"  aria-label="First group">
-                        <a href="/" class="btn btn-primary">Посмотреть</a>
+                        <a href="{{route('project.show', [$recentProject->id])}}" class="btn btn-primary">Посмотреть</a>
                         <a href="/" class="btn btn-primary">Участвовать</a>
                     </div>
                 </div>

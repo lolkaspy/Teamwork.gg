@@ -8,7 +8,7 @@
 
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/js/animations.js'])
-    <link href="static/style/app.css" rel="stylesheet" />
+    <link href="{{asset('static/style/app.css')}}" rel="stylesheet" />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
