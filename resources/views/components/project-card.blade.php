@@ -1,3 +1,9 @@
+<div class="container">
+
+    <div class="d-flex justify-content-end mt-4 mb-2">
+        {{$projects->withQueryString()->links()}}
+    </div>
+
 <div class="row row-cols-1 row-cols-md-4 g-4">
     @foreach($projects as $project)
             <div class="col">
@@ -32,5 +38,9 @@
 
     @endforeach
 </div>
-<hr>
+
+    <div class="d-flex justify-content-end mt-4 mb-2">
 {{$projects->withQueryString()->links()}}
+    </div>
+
+</div>

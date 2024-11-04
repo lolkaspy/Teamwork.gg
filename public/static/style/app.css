@@ -177,6 +177,6 @@ body {
     border-color: var(--tags-focus-border-color);
 }
 
-.news-header {
+.news-header, .profile-header {
     font-weight: bold;
 }

@@ -13,11 +13,5 @@
 
 @endsection
 @section('content')
-
-    <div class="container">
-        <hr>
         <x-project-card :projects="$projects"/>
-        <br>
-    </div>
-
 @endsection
