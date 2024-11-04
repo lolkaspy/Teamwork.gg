@@ -1,29 +1,25 @@
 <div class="row row-cols-1 row-cols-md-4 g-4">
     @foreach($projects as $project)
-
             <div class="col">
                 <div class="card">
                     <img src="{{$project->photo}}" class="card-img-top" alt="...">
-                    <div class="card-body">
+                    <div class="card-body text-dark">
 
-                        <div>
-                            <h5 class="card-title">{{$project->name}}</h5>
-                            <p class="card-text card-description">{{$project->description}}</p>
-                        </div>
-
-
-                        <p class="card-text">Участников в команде: {{$participantsCount[$project->id]->count ?? 0}}/{{$project->participants}}</p>
-                        <p class="card-text">Формат: {{$project->format->name}}</p>
-                        <span class="card-text">Теги:</span>
-                        <div class="mb-5" style="height: 35px;">
-                            @foreach($project->tags as $tag)
-                                <span class="badge">{{$tag->name}}</span>
-                            @endforeach
-                        </div>
-
-                        <p class="card-text ms-2">Возрастное ограничение: {{$project->age_limit->limit}}</p>
-
+                        <h5 class="card-title">{{$project->name}}</h5>
+                        <hr/>
+                        <p class="card-text">{{$project->description}}</p>
                     </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Участников в команде: {{$participantsCount[$project->id]->count ?? 0}}/{{$project->participants}}</li>
+                            <li class="list-group-item">Формат: {{$project->format->name}}</li>
+                            <li class="list-group-item">Теги:</li>
+                            <li class="list-group-item" style="height: 60px;">
+                                @foreach($project->tags as $tag)
+                                    <span class="badge">{{$tag->name}}</span>
+                                @endforeach</li>
+                            <li class="list-group-item">Возрастное ограничение: {{$project->age_limit->limit}}</li>
+                        </ul>
+
 
                     <div class="card-footer" >
                         <div class="d-grid gap-2 d-md-flex justify-content-between"  aria-label="First group">
