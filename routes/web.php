@@ -27,7 +27,10 @@ Route::get('/projects', [ProjectController::class, 'index'])
     ->name('projects.index');
 
 Route::get('/projects/{project}', [ProjectController::class, 'show'])
-    ->name('project.show');
+    ->name('projects.show');
+
+Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])
+    ->name('projects.destroy');
 
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news-page');

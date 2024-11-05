@@ -30,11 +30,16 @@
                                 <h5 class="card-title">{{$project->name}}</h5>
                             </div>
                             <ul class="list-group list-group-flush align-items-center">
-                                <li class="list-group-item"> <a href="/" class="btn btn-primary">Посмотреть</a></li>
+                                <li class="list-group-item"> <a href="{{route('projects.show', [$project->id])}}" class="btn btn-primary">Посмотреть</a></li>
                                 <li class="list-group-item"> <a href="/" class="btn btn-primary">Участвовать</a></li>
+                                <li class="list-group-item">
+                                    <form action="{{ route('projects.destroy', [$project->id]) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Распустить</button>
+                                    </form>
+                                </li>
                             </ul>
-
-
 
                         </div>
 

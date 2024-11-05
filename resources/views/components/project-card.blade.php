@@ -29,7 +29,7 @@
 
                     <div class="card-footer" >
                         <div class="d-grid gap-2 d-md-flex justify-content-between"  aria-label="First group">
-                            <a href="{{route('project.show', [$project->id])}}" class="btn btn-primary">Посмотреть</a>
+                            <a href="{{route('projects.show', [$project->id])}}" class="btn btn-primary">Посмотреть</a>
                             <a href="/" class="btn btn-primary">Участвовать</a>
                         </div>
                     </div>

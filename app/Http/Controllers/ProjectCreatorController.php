@@ -73,6 +73,6 @@ class ProjectCreatorController extends Controller
         $user = Auth::id();
         $project->users()->attach($user);
 
-        return redirect()->route('welcome')->with('success', 'Проект успешно создан!');
+        return redirect()->back()->with('success', 'Проект успешно создан!');
     }
 }
