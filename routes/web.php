@@ -45,3 +45,5 @@ Route::get('/profile', [ProfileController::class, 'index'])
     ->middleware('auth');
 
 Route::post('/modal_project_store', [ProjectCreatorController::class, 'store'])->name('projectStore');
+
+Route::put('/projects/{project}', [ProjectCreatorController::class, 'update'])->name('projectUpdate');

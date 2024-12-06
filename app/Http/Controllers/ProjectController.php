@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use Illuminate\Support\Facades\DB;
 
 class ProjectController extends Controller
 {
@@ -20,22 +21,24 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
+        DB::transaction(function () use ($project) {
+            if ($project->tags()->exists()) {
+                $project->tags()->detach();
+            }
 
-        if ($project->tags()->exists()) {
-            $project->tags()->detach();
-        }
+            if ($project->users()->exists()) {
+                $project->users()->detach();
+            }
 
-        if ($project->users()->exists()) {
-            $project->users()->detach();
-        }
+            if ($project->photo != 'static/images/project_placeholder.jpg') {
+                $fullPath = str_replace('/storage', storage_path('app/public'), $project->photo);
+                unlink($fullPath);
+            }
 
-        if ($project->photo != 'static/images/project_placeholder.jpg') {
-            $fullPath = str_replace('/storage', storage_path('app/public'), $project->photo);
-            unlink($fullPath);
-        }
+            $project->delete();
 
-        $project->delete();
-
-        return redirect()->back()->with('success', 'Проект был успешно распущен');
+            return redirect()->back()->with('success', 'Проект был успешно распущен');
+        });
+        return redirect()->back()->with('error', 'Возникла ошибка при роспуске команды');
     }
 }

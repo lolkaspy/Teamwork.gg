@@ -75,4 +75,51 @@ class ProjectCreatorController extends Controller
 
         return redirect()->back()->with('success', 'Проект успешно создан!');
     }
+
+
+    public function update(Request $request, $id)
+    {
+        // Валидация данных
+        $request->validate([
+            'name' => 'required|string|max:255|unique:projects,name,' . $id,
+            'description' => 'required|string',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'participants' => 'required|integer|min:2|max:10',
+            'format_id' => 'required|exists:formats,id',
+            'age_limit_id' => 'required|exists:age_limits,id',
+        ]);
+
+        // Находим проект
+        $project = Project::findOrFail($id);
+
+        // Обновляем поля проекта
+        $project->name = $request->name;
+        $project->description = $request->description;
+        $project->participants = $request->participants;
+        $project->format_id = $request->format_id;
+        $project->age_limit_id = $request->age_limit_id;
+
+        // Обработка загрузки нового изображения
+        if ($request->hasFile('image')) {
+            // Удаляем старое изображение, если оно не является изображением-заглушкой
+            if ($project->photo && $project->photo != 'static/images/project_placeholder.jpg') {
+                $fullPath = str_replace('/storage', storage_path('app/public'), $project->photo);
+                if (file_exists($fullPath)) {
+                    unlink($fullPath);
+                }
+            }
+            // Загружаем новое изображение
+            $path = $request->file('image')->store('projects', 'public');
+            $project->photo = $path;
+        }
+
+        // Сохраняем изменения
+        $project->save();
+
+        // Обновляем теги (вы можете использовать ваш способ управления тегами)
+        $tags = explode(',', $request->get('tags-outside'));
+        $project->tags()->sync($tags);
+
+        return redirect()->route('projects.index')->with('success', 'Проект успешно обновлён.');
+    }
 }

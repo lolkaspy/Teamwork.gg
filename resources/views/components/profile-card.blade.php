@@ -1,3 +1,4 @@
+
 <div>
     <div class="container">
         <hr>
@@ -39,6 +40,22 @@
                                         <button type="submit" class="btn btn-danger">Распустить</button>
                                     </form>
                                 </li>
+                                <li class="list-group-item">
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editProjectModal"
+                                                                      data-id="{{ $project->id }}"
+                                                                      data-name="{{ $project->name }}"
+                                                                      data-description="{{ $project->description }}"
+                                                                      data-participants="{{ $project->participants }}"
+                                                                      data-format-id="{{ $project->format_id }}"
+                                                                      data-age-limit-id="{{ $project->age_limit_id }}"
+                                            data-tags="{{ implode(',', $project->tags()->pluck('name')->toArray()) }}"
+                                            data-image-path="{{$project->photo}}">
+
+                                        Редактировать
+                                    </button>
+                                </li>
+
+
                             </ul>
 
                         </div>
@@ -130,3 +147,5 @@
     </div>
 
 </div>
+
+<x-modal-project-editor :project="$project" />
