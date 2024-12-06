@@ -79,7 +79,7 @@ body {
     cursor: default;
 }
 
-.panel, .modal-header {
+.panel, .card-header {
     background-color: #e3f2fd;
 }
 
@@ -180,3 +180,25 @@ body {
 .news-header, .profile-header {
     font-weight: bold;
 }
+
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 78%; /* Используем min-height для обеспечения видимости footer */
+}
+
+.content {
+    flex: 1; /* Позволяет занимать все доступное пространство */
+    display: flex;
+    justify-content: center; /* Центрирует содержимое по горизонтали */
+    align-items: center; /* Центрирует содержимое по вертикали */
+}
+
+
+
