@@ -15,8 +15,13 @@
                 </li>
                 <li class="vr"></li>
 
-                <li class="nav-item"><a class="nav-link" href="{{route('news-page')}}">Новости</a>
+                <li class="nav-item"><a class="nav-link" href="{{route('news')}}">Новости</a>
                 </li>
+
+                @if (Auth::check() && Auth::user()->roles->contains('name', 'Администратор'))
+                <li class="nav-item"><a class="nav-link" href="{{route('admin.dashboard')}}">Панель администратора</a>
+                </li>
+                @endif
             </ul>
             <!-- Right Side Of Navbar -->
             <ul class="navbar-nav ms-auto navbar-right">

@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectCreatorController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -36,7 +38,7 @@ Route::patch('/projects/{project}', [ProjectCreatorController::class, 'update'])
     ->name('projects.update');
 
 Route::get('/news', [NewsController::class, 'index'])
-    ->name('news-page');
+    ->name('news');
 
 Auth::routes();
 
@@ -48,3 +50,23 @@ Route::get('/profile', [ProfileController::class, 'index'])
     ->middleware('auth');
 
 Route::post('/modal_project_store', [ProjectCreatorController::class, 'store'])->name('projectStore');
+
+Route::group(['prefix' => '/admin', 'middleware' => ['admin']], function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::resource('users', UserController::class)->only(['index', 'edit', 'update', 'destroy', 'show', 'create'])->names([
+        'index' => 'admin.users.index',
+        'edit' => 'admin.users.edit',
+        'update' => 'admin.users.update',
+        'destroy' => 'admin.users.destroy',
+        'show' => 'admin.users.show',
+        'create' => 'admin.users.create',
+    ]);
+    Route::resource('projects', ProjectController::class)->only(['index', 'edit', 'update', 'destroy', 'show', 'create'])->names([
+        'index' => 'admin.projects.index',
+        'edit' => 'admin.projects.edit',
+        'update' => 'admin.projects.update',
+        'destroy' => 'admin.projects.destroy',
+        'show' => 'admin.projects.show',
+        'create' => 'admin.projects.create',
+    ]);
+});

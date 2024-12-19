@@ -50,11 +50,23 @@ body {
         transform: translateY(0);
 }
 
+.nav-tabs .nav-item .nav-link.active{
+    background-color: #fafdff;
+}
 .active {
+
     opacity: 1;
     transform: translateY(0);
 }
 
+.admin-div {
+    border:  0.375px #dee2e6 solid;
+    margin-bottom: 50px;
+
+}
+.admin-ul {
+    margin-top: 25px;
+}
 .recent-projects {
     padding-top: 25px;
     padding-bottom: 25px;

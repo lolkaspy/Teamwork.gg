@@ -1,9 +1,9 @@
 import './bootstrap';
-import Tagify from '@yaireo/tagify'
 import 'bootstrap';
 import { Modal } from 'bootstrap'
-import '@popperjs/core';
 
+import Tagify from '@yaireo/tagify'
+import '@popperjs/core';
 
 //#region раскраска тегов
 window.onload = function() {
@@ -132,3 +132,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 //#endregion
+
+document.addEventListener("DOMContentLoaded", function () {
+    const tabLinks = document.querySelectorAll('#adminTabs .nav-link');
+
+    function switchTab(targetId) {
+        tabLinks.forEach(link => {
+            link.classList.remove('active');
+            const targetTab = document.querySelector(link.getAttribute('href'));
+            if (targetTab) {
+                targetTab.classList.remove('show', 'active');
+            }
+        });
+
+        const targetLink = document.querySelector(`a[href="${targetId}"]`);
+        if (targetLink) {
+            targetLink.classList.add('active');
+            const targetTab = document.querySelector(targetId);
+            if (targetTab) {
+                targetTab.classList.add('show', 'active');
+            }
+        }
+    }
+
+    // Получаем активную вкладку из sessionStorage или устанавливаем по умолчанию
+    const activeTab = sessionStorage.getItem('activeAdminTab') || '#users';
+    switchTab(activeTab);  // Сразу переключаем на активную вкладку
+
+    tabLinks.forEach(link => {
+        link.addEventListener('click', function () {
+            // Сохраняем активную вкладку в sessionStorage
+            const href = this.getAttribute('href');
+            sessionStorage.setItem('activeAdminTab', href);
+            switchTab(href);
+        });
+    });
+
+    // Убираем обработчик очистки sessionStorage, чтобы сохранить вкладку при переходах
+});
