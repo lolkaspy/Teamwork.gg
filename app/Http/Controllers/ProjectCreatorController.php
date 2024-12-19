@@ -6,6 +6,7 @@ use App\Models\Project;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Intervention\Image\ImageManager;
 
 class ProjectCreatorController extends Controller
@@ -76,50 +77,89 @@ class ProjectCreatorController extends Controller
         return redirect()->back()->with('success', 'Проект успешно создан!');
     }
 
-
     public function update(Request $request, $id)
     {
         // Валидация данных
         $request->validate([
-            'name' => 'required|string|max:255|unique:projects,name,' . $id,
-            'description' => 'required|string',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'participants' => 'required|integer|min:2|max:10',
-            'format_id' => 'required|exists:formats,id',
-            'age_limit_id' => 'required|exists:age_limits,id',
+            'nameEdit' => 'required|string|max:255|unique:projects,name,id',
+            'descriptionEdit' => 'required|string',
+            'imageEdit' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'participantsEdit' => 'required|integer|min:2|max:10',
+            'format_idEdit' => 'required|exists:formats,id',
+            'age_limit_idEdit' => 'required|exists:age_limits,id',
         ]);
+        DB::transaction(function () use ($request, $id) {
+            // Находим проект
+            $project = Project::findOrFail($id);
 
-        // Находим проект
-        $project = Project::findOrFail($id);
+            // Обновляем поля проекта
+            $project->name = $request->nameEdit;
+            $project->description = $request->descriptionEdit;
+            $project->participants = $request->participantsEdit;
+            $project->format_id = $request->format_idEdit;
+            $project->age_limit_id = $request->age_limit_idEdit;
 
-        // Обновляем поля проекта
-        $project->name = $request->name;
-        $project->description = $request->description;
-        $project->participants = $request->participants;
-        $project->format_id = $request->format_id;
-        $project->age_limit_id = $request->age_limit_id;
+            // Обработка загрузки нового изображения
+            if ($request->hasFile('imageEdit')) {
+                // Удаляем старое изображение, если оно не является изображением-заглушкой
+                if ($project->photo && $project->photo != 'static/images/project_placeholder.jpg') {
+                    $fullPath = str_replace('/storage', storage_path('app/public'), $project->photo);
+                    if (file_exists($fullPath)) {
+                        unlink($fullPath);
+                    }
+                }
 
-        // Обработка загрузки нового изображения
-        if ($request->hasFile('image')) {
-            // Удаляем старое изображение, если оно не является изображением-заглушкой
-            if ($project->photo && $project->photo != 'static/images/project_placeholder.jpg') {
-                $fullPath = str_replace('/storage', storage_path('app/public'), $project->photo);
-                if (file_exists($fullPath)) {
-                    unlink($fullPath);
+                // Сохраняем новое изображение
+                $image = $request->file('imageEdit');
+                if ($image->isValid()) {
+                    $directory = storage_path('/app/public/project_images/');
+                    if (! file_exists($directory)) {
+                        mkdir($directory, 0755, true);
+                    }
+
+                    $filename = time().'.'.$image->getClientOriginalExtension();
+                    $newImage = ImageManager::imagick()->read($image);
+                    $newImage->resize(1920 / 2, 1080 / 2)->save($directory.$filename);
+
+                    $project->photo = '/storage/project_images/'.$filename;
+                } else {
+                    throw new \Exception('Загруженный файл является недействительным.');
                 }
             }
-            // Загружаем новое изображение
-            $path = $request->file('image')->store('projects', 'public');
-            $project->photo = $path;
-        }
 
-        // Сохраняем изменения
-        $project->save();
+            // Сохраняем изменения
+            $project->save();
 
-        // Обновляем теги (вы можете использовать ваш способ управления тегами)
-        $tags = explode(',', $request->get('tags-outside'));
-        $project->tags()->sync($tags);
+            if ($request->has('tags-outside-edit')) {
+                $tagList = json_decode($request->input('tags-outside-edit'), true);
 
-        return redirect()->route('projects.index')->with('success', 'Проект успешно обновлён.');
+                // Сначала очистим теги
+                $project->tags()->detach();
+
+                foreach ($tagList as $tagData) {
+                    // Проверяем, является ли это корректным объектом с атрибутом `value`
+                    if (isset($tagData['value'])) {
+                        $tagName = $tagData['value'];
+
+                        // Поиск тега по имени
+                        $tag = Tag::where('name', '=', $tagName)->first();
+
+                        // Если тег существует, прикрепляем его к проекту
+                        if ($tag) {
+                            $project->tags()->attach($tag->id);
+                        } else {
+                            // В противном случае создаем новый тег
+                            $newTag = new Tag;
+                            $newTag->name = $tagName;
+                            $newTag->save();
+                            $project->tags()->attach($newTag->id);
+                        }
+                    }
+                }
+            }
+
+        });
+
+        return redirect()->back()->with('success', 'Проект успешно обновлён.');
     }
 }

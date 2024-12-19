@@ -6,37 +6,37 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form class="edit-project-form" method="POST" action="">
+                <form class="edit-project-form" method="POST" action="{{route("projects.update", $project)}}" enctype='multipart/form-data'>
                     @csrf
-                    @method('PUT')
+                    @method('PATCH')
                     <div class="form-group">
                         <div class="mb-3">
-                            <label for="projectName" class="form-label">Имя проекта</label>
-                            <input type="text" name="name" class="form-control" id="projectName" required placeholder="Введите имя проекта">
+                            <label for="projectNameEdit" class="form-label">Имя проекта</label>
+                            <input type="text" name="nameEdit" class="form-control" id="projectNameEdit" required placeholder="Введите имя проекта">
                         </div>
                         <div class="mb-3">
-                            <label for="projectDescription" class="form-label">Введите описание</label>
-                            <textarea class="form-control" name="description" id="projectDescription" required></textarea>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="imagePreview">Предварительный просмотр изображения:</label>
-                            <img id="imagePreview" src="" alt="Image Preview" style="max-width: 100%; display: none;"/>
+                            <label for="projectDescriptionEdit" class="form-label">Введите описание</label>
+                            <textarea class="form-control" name="descriptionEdit" id="projectDescriptionEdit" required></textarea>
                         </div>
 
                         <div class="mb-3">
-                            <label for="projectPhoto">Загрузите изображение для проекта</label>
-                            <input type="file" id="projectPhoto" name="image" required class="course form-control">
+                            <label for="imagePreviewEdit">Предварительный просмотр изображения:</label>
+                            <img id="imagePreviewEdit" src="" alt="Image Preview" style="max-width: 100%; display: none;"/>
                         </div>
 
                         <div class="mb-3">
-                            <label for="projectTags" class="form-label">Выберите теги, соответствующие проекту</label>
-                            <input name="tags-outside" id="projectTags" class="tagify--outside form-control" value="{{ implode(',', $project->tags()->pluck('name')->toArray()) }}" placeholder="Тег, например, 'Разработка ПО'">
+                            <label for="projectPhotoEdit">Загрузите изображение для проекта</label>
+                            <input type="file" id="projectPhotoEdit" name="imageEdit" required class="course form-control">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="projectTagsEdit" class="form-label">Выберите теги, соответствующие проекту</label>
+                            <input name="tags-outside-edit" id="projectTagsEdit" class="tagify--outside form-control" value="{{ implode(',', $project->tags()->pluck('name')->toArray()) }}" placeholder="Тег, например, 'Разработка ПО'">
     </div>
 
                         <div class="mb-3">
-                            <label for="projectParticipants" class="form-label">Укажите максимальное число участников</label>
-                            <select id="projectParticipants" name="participants" class="form-control form-select" required>
+                            <label for="projectParticipantsEdit" class="form-label">Укажите максимальное число участников</label>
+                            <select id="projectParticipantsEdit" name="participantsEdit" class="form-control form-select" required>
                                 @for($i=2;$i<=10;$i++)
                                     <option value="{{ $i }}">{{ $i }}</option>
                                 @endfor
@@ -44,8 +44,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="projectFormats" class="form-label">Выберите вариант реализации проекта</label>
-                            <select id="projectFormats" name="format_id" class="form-control form-select" required>
+                            <label for="projectFormatsEdit" class="form-label">Выберите вариант реализации проекта</label>
+                            <select id="projectFormatsEdit" name="format_idEdit" class="form-control form-select" required>
                                 <option value="{{ $formatEnum::Remote->value }}">Дистанционный</option>
                                 <option value="{{ $formatEnum::OnSite->value }}">Очный</option>
                                 <option value="{{ $formatEnum::Mixed->value }}">Смешанный</option>
@@ -53,8 +53,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="projectAgeLimits" class="form-label">Выберите возрастные ограничения</label>
-                            <select id="projectAgeLimits" name="age_limit_id" class="form-control form-select" required>
+                            <label for="projectAgeLimitsEdit" class="form-label">Выберите возрастные ограничения</label>
+                            <select id="projectAgeLimitsEdit" name="age_limit_idEdit" class="form-control form-select" required>
                                 <option value="{{ $ageLimitEnum::Sixteen->value }}">16+</option>
                                 <option value="{{ $ageLimitEnum::Eighteen->value }}">18+</option>
                                 <option value="{{ $ageLimitEnum::ThirtyFive->value }}">35+</option>

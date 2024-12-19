@@ -27,6 +27,7 @@ document.getElementById('closeModalBtn').addEventListener('click', function(even
     closeModal();
 });
 
+window.tagify = null;
 document.addEventListener('DOMContentLoaded', function() {
 var input = document.querySelector('input[name=tags-outside]')
 
@@ -34,7 +35,7 @@ var input = document.querySelector('input[name=tags-outside]')
 fetch('/api/tags')
     .then(response => response.json())
     .then(tagList => {
-var tagify = new Tagify(input, {
+        window.tagify = new Tagify(input, {
     whitelist: tagList,
     focusable: false,
     maxTags: 10,
@@ -80,22 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
         modalBody.setAttribute('action', '/projects/' + projectId);
 
         // Установка значений в форму
-        modalBody.querySelector('#projectName').value = projectName;
-        modalBody.querySelector('#projectDescription').value = projectDescription;
+        modalBody.querySelector('#projectNameEdit').value = projectName;
+        modalBody.querySelector('#projectDescriptionEdit').value = projectDescription;
 
         // Установка количества участников
-        modalBody.querySelector('#projectParticipants').value = projectParticipants;
+        modalBody.querySelector('#projectParticipantsEdit').value = projectParticipants;
 
         // Установка формата проекта - это селект, значит его нужно установить отдельно
-        modalBody.querySelector('#projectFormats').value = projectFormatId;
+        modalBody.querySelector('#projectFormatsEdit').value = projectFormatId;
 
         // Установка возрастного ограничения - это тоже селект
-        modalBody.querySelector('#projectAgeLimits').value = projectAgeLimitId;
+        modalBody.querySelector('#projectAgeLimitsEdit').value = projectAgeLimitId;
 
-        const projectTagsInput = modalBody.querySelector('#projectTags');
+        const projectTagsInput = modalBody.querySelector('#projectTagsEdit');
         projectTagsInput.value = projectTags;
 
-        const input2 = modalBody.querySelector('#projectTags');
+        const input2 = modalBody.querySelector('#projectTagsEdit');
 
         // Clear previous tags and set the existing project tags
         const tagify2 = new Tagify(input2, {
@@ -122,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
         // Установка изображения - здесь можно, в зависимости от вашей реализации, показать его или как-то отобразить
-        const imagePreview = modalBody.querySelector('#imagePreview');
+        const imagePreview = modalBody.querySelector('#imagePreviewEdit');
         if (imagePreview) {
             imagePreview.src = projectImagePath; // Assuming you have an <img> for preview
             imagePreview.style.display = 'block'; // Show it

@@ -17,16 +17,20 @@ class ModalProjectEditor extends Component
      * Create a new component instance.
      */
     public Project $project;
+
     public Collection $tags;
+
     public string $ageLimitEnum;
+
     public string $formatEnum;
 
-
-    public function __construct(Project $project) {
+    public function __construct(Project $project)
+    {
         $this->project = $project;
         $this->tags = Tag::all(); // Получаем все теги из базы данных
         $this->ageLimitEnum = AgeLimitEnum::class;
-        $this->formatEnum = FormatEnum::class;}
+        $this->formatEnum = FormatEnum::class;
+    }
 
     /**
      * Get the view / contents that represent the component.

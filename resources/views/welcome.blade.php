@@ -1,5 +1,18 @@
 @extends('layouts.app')
 @section('content')
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div class="container-md landing-welcome-text" id="dynamic-bg">
     <h1 class="welcome-h1">Место, в которое <br>хочется  возвращаться <br><span class="landing-welcome-placeholder"  id="dynamic-text">всегда!</span></h1>
     </div>

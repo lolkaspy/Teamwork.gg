@@ -32,6 +32,9 @@ Route::get('/projects/{project}', [ProjectController::class, 'show'])
 Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])
     ->name('projects.destroy');
 
+Route::patch('/projects/{project}', [ProjectCreatorController::class, 'update'])
+    ->name('projects.update');
+
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news-page');
 
@@ -45,5 +48,3 @@ Route::get('/profile', [ProfileController::class, 'index'])
     ->middleware('auth');
 
 Route::post('/modal_project_store', [ProjectCreatorController::class, 'store'])->name('projectStore');
-
-Route::put('/projects/{project}', [ProjectCreatorController::class, 'update'])->name('projectUpdate');

@@ -16,7 +16,10 @@ class ProjectController extends Controller
 
     public function show(Project $project)
     {
-        return view('project-info', compact('project'));
+        $participantsCount = DB::table('project_users')->select(DB::raw('count(*) as count, project_id'))
+            ->groupBy('project_id')->get()->keyBy('project_id');
+
+        return view('project-info', compact('project', 'participantsCount'));
     }
 
     public function destroy(Project $project)
@@ -36,9 +39,8 @@ class ProjectController extends Controller
             }
 
             $project->delete();
-
-            return redirect()->back()->with('success', 'Проект был успешно распущен');
         });
-        return redirect()->back()->with('error', 'Возникла ошибка при роспуске команды');
+
+        return redirect()->back()->with('success', 'Проект был успешно распущен');
     }
 }

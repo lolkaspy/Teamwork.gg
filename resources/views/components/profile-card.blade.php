@@ -25,6 +25,7 @@
                 <hr>
                 <div class="card-group">
                     @foreach(Auth::user()->projects as $project)
+
                         <div class="card">
                             <img src="{{$project->photo}}" class="card-img-top" alt="...">
                             <div class="card-body">
@@ -148,4 +149,4 @@
 
 </div>
 
-<x-modal-project-editor :project="$project" />
+<x-modal-project-editor :project="$project ?? App\Models\Project::findOrFail(1)" />
