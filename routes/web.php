@@ -6,6 +6,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectCreatorController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Auth;
@@ -68,5 +69,21 @@ Route::group(['prefix' => '/admin', 'middleware' => ['admin']], function () {
         'destroy' => 'admin.projects.destroy',
         'show' => 'admin.projects.show',
         'create' => 'admin.projects.create',
+    ]);
+    Route::resource('roles', RoleController::class)->only(['index', 'edit', 'update', 'destroy', 'show', 'create'])->names([
+        'index' => 'admin.roles.index',
+        'edit' => 'admin.roles.edit',
+        'update' => 'admin.roles.update',
+        'destroy' => 'admin.roles.destroy',
+        'show' => 'admin.roles.show',
+        'create' => 'admin.roles.create',
+    ]);
+    Route::resource('news', NewsController::class)->only(['index', 'edit', 'update', 'destroy', 'show', 'create'])->names([
+        'index' => 'admin.news.index',
+        'edit' => 'admin.news.edit',
+        'update' => 'admin.news.update',
+        'destroy' => 'admin.news.destroy',
+        'show' => 'admin.news.show',
+        'create' => 'admin.news.create',
     ]);
 });

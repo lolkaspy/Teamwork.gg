@@ -212,5 +212,32 @@ html, body {
     align-items: center; /* Центрирует содержимое по вертикали */
 }
 
+.badge {
+    transition: all 0.2s ease;
+}
 
+.badge:hover {
+    opacity: 0.8;
+    transform: translateY(-1px);
+}
 
+/* Стили для списка участников */
+.participant-list {
+    max-height: 150px;
+    overflow-y: auto;
+}
+
+.participant-item {
+    padding: 5px;
+    border-radius: 4px;
+    background-color: #f8f9fa;
+    margin-bottom: 5px;
+}
+
+.participant-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}

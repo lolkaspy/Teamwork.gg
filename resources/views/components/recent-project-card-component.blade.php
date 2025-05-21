@@ -13,10 +13,16 @@
                     <li class="list-group-item">Участников в команде: {{$participantsCount[$recentProject->id]->count ?? 0}}/{{$recentProject->participants}}</li>
                     <li class="list-group-item">Формат: {{$recentProject->format->name}}</li>
                     <li class="list-group-item">Теги:</li>
-                    <li class="list-group-item" style="height: 60px;">
-                        @foreach($recentProject->tags as $tag)
-                            <span class="badge">{{$tag->name}}</span>
-                        @endforeach
+                    <li class="list-group-item" style="height: 100px;">
+                        @forelse($recentProject->tags as $tag)
+                            <a href="{{ route('projects.index', ['tags' => $tag->name]) }}"
+                               class="badge text-decoration-none me-1"
+                               style="cursor: pointer;">
+                                {{ $tag->name }}
+                            </a>
+                        @empty
+                            <span class="text-muted">Теги не указаны</span>
+                        @endforelse
                     </li>
                     <li class="list-group-item">Возрастное ограничение: {{$recentProject->age_limit->limit}}</li>
                 </ul>

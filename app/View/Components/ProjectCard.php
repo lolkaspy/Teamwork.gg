@@ -26,6 +26,7 @@ class ProjectCard extends Component
         $participantsCount = DB::table('project_users')->select(DB::raw('count(*) as count, project_id'))
             ->groupBy('project_id')->get()->keyBy('project_id');
 
+
         return view('components.project-card', compact('participantsCount'));
     }
 }

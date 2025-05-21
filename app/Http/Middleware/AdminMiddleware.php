@@ -20,6 +20,6 @@ class AdminMiddleware
             return $next($request);
         }
 
-        return redirect('/')->with('error', 'У вас нет доступа к этой странице.');
+        return redirect()->back()->with('error', 'У вас нет доступа к этой странице.');
     }
 }

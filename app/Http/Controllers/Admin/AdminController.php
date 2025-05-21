@@ -10,14 +10,6 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $users = User::with(['tags', 'networks', 'projects', 'roles'])
-            ->orderBy('created_at', 'desc')
-            ->paginate(20, ['*'], 'users');
-
-        $projects = Project::with(['tags', 'age_limit', 'format'])
-            ->orderBy('created_at', 'desc')
-            ->paginate(20, ['*'], 'projects');
-
-        return view('admin-dashboard', compact('users', 'projects'));
+        return view('admin-dashboard');
     }
 }

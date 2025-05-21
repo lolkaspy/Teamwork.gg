@@ -10,7 +10,26 @@
             <p class="card-text">{{$project->description}}</p>
         </div>
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Участников в команде: {{$participantsCount[$project->id]->count ?? 0}}/{{$project->participants}}</li>
+            <li class="list-group-item">Участников в команде: {{$participantsCount[$project->id]->count ?? 0}}/{{$project->participants}}
+                @if(isset($projectParticipants[$project->id]) && $projectParticipants[$project->id]->count() > 0)
+                    <div class="mt-2">
+                        <small class="text-muted">Список участников:</small>
+                        <div class="d-flex flex-wrap gap-2 mt-1">
+                            @foreach($projectParticipants[$project->id] as $user)
+                                <div class="d-flex align-items-center">
+                                    @if($user->photo)
+                                        <img src="{{ asset($user->photo) }}"
+                                             class="rounded-circle me-2"
+                                             width="30" height="30"
+                                             alt="{{ $user->fname }} {{ $user->lname }}">
+                                    @endif
+                                    <span>{{ $user->fname }} {{ $user->lname }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @endif
+            </li>
             <li class="list-group-item">Формат: {{$project->format ? $project->format->name : 'Не указан'}}</li>
             <li class="list-group-item">Теги:</li>
             <li class="list-group-item" style="height: 60px;">

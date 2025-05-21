@@ -170,3 +170,55 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Убираем обработчик очистки sessionStorage, чтобы сохранить вкладку при переходах
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const input = document.querySelector('#searchTags');
+    if (input) {
+        // Инициализация Tagify
+        const tagify3 = new Tagify(input, {
+            whitelist: [],
+            maxTags: 5,
+            dropdown: {
+                maxItems: 10,
+                enabled: 0,
+                closeOnSelect: false
+            },
+            originalInputValueFormat: valuesArr => JSON.stringify(valuesArr)
+        });
+
+        // Загрузка списка тегов
+        fetch('/api/tags')
+            .then(response => response.json())
+            .then(tags => {
+                tagify3.settings.whitelist = tags;
+            });
+
+        // Обработчик перед отправкой формы
+        const form = input.closest('form');
+        if (form) {
+            form.addEventListener('submit', function() {
+                // Очищаем предыдущее значение
+                input.value = '';
+
+                // Устанавливаем только выбранные теги в JSON формате
+                if (tagify.value.length > 0) {
+                    input.value = JSON.stringify(tagify3.value);
+                }
+            });
+        }
+
+        // Восстановление тегов после поиска
+        const urlParams = new URLSearchParams(window.location.search);
+        const tagsParam = urlParams.get('tags');
+
+        if (tagsParam) {
+            try {
+                const tags = JSON.parse(tagsParam);
+                const tagValues = tags.map(tag => tag.value);
+                tagify.addTags(tagValues); // Добавляем только значения тегов
+            } catch (e) {
+                console.error('Error parsing tags:', e);
+            }
+        }
+    }
+});
